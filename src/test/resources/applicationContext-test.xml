@@ -27,4 +27,23 @@
 		<property name="required" value="true" />
 	</bean>
 
+	<bean id="apiReferenceService" class="com.tsubaka.query.service.ApiReferenceService">
+		<property name="apiReferenceList">
+			<list>
+				<ref bean="imdb" />
+				<ref bean="yahoo" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="imdb" class="com.tsubaka.query.serviceobject.Api">
+		<property name="apiName" value="imdb" />
+		<property name="url" value="http://www.omdbapi.com/?s=batman" />
+	</bean>
+
+	<bean id="yahoo" class="com.tsubaka.query.serviceobject.Api">
+		<property name="apiName" value="yahoo" />
+		<property name="url" value="http://yahoo.com" />
+	</bean>
+
 </beans>
