@@ -40,4 +40,18 @@
 		<property name="url" value="http://www.omdbapi.com/?s=batman" />
 	</bean>
 
+	<bean id="imdbMovieParser" class="com.tsubaka.query.service.ImdbParserServiceImpl">
+		<property name="api" ref="imdb" />
+		<property name="restTemplate" ref="restTemplate" />
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+
 </beans>
