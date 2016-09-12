@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="com.tsubaka.query.service" />
+
+	<context:annotation-config/>
+
+	<bean id="vmArgsService" class="com.tsubaka.query.service.VmArgsService">
+		<property name="vmArgsList" >
+			<list>
+				<ref bean="api" />
+				<ref bean="movie" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="api" class="com.tsubaka.query.serviceobject.VmArgs">
+		<property name="argName" value="api" />
+		<property name="required" value="true" />
+	</bean>
+
+	<bean id="movie" class="com.tsubaka.query.serviceobject.VmArgs">
+		<property name="argName" value="movie" />
+		<property name="required" value="true" />
+	</bean>
+
+</beans>
